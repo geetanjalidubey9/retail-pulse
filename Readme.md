@@ -79,10 +79,10 @@ You can use **Postman** to test the API endpoints:
 
 ## **4. Work Environment**
 
-- **Operating System**: Ubuntu 22.04 LTS (Linux) / Windows 10
-- **Text Editor/IDE**: Visual Studio Code / GoLand
+- **Operating System**:  Windows 11
+- **Text Editor/IDE**: Visual Studio Code
 - **Libraries and Tools Used**:
-  - **Go** (version 1.18 or above)
+  - **Go** go version go1.23.3 windows/amd64
   - **Docker** (for containerization)
   - **Gin Web Framework** (for HTTP API server)
   - **Go Modules** (for dependency management)
