@@ -26,24 +26,19 @@ This service simulates a job queue system that processes images, calculates a va
 
 ### **Setting up the project**:
 
-1. **Clone the repository**:
-
-   git clone https://github.com/yourusername/retail-pulse-image-processing.git
-   cd retail-pulse-image-processing
-
-2. **Set up Go Modules**:
+1. **Set up Go Modules**:
    Ensure you have Go installed on your system. Initialize Go modules if you haven't already:
    ```bash
    go mod tidy
    ```
 
-3. **Run the application**:
+2. **Run the application**:
    To run the application without Docker, use the following command:
    ```bash
    go run main.go
    ```
 
-4. **Docker Setup**:
+3. **Docker Setup**:
    If you prefer to use Docker, make sure you have Docker installed and then run:
    ```bash
    docker build -t retail-pulse-image-processing .
