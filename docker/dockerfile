@@ -1,0 +1,35 @@
+# Step 1: Use the official Go image as the base image
+FROM golang:1.23.3 AS builder
+
+# Step 2: Set the working directory to /app
+WORKDIR /app
+
+# Step 3: Copy the Go modules files (go.mod and go.sum)
+COPY go.mod go.sum ./
+
+# Step 4: Download and install the Go dependencies
+RUN go mod tidy
+
+# Step 5: Copy the entire project source code into the container
+COPY . .
+
+# Step 6: Build the Go application
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o app .
+
+# Step 7: Use a smaller base image to create a smaller production image
+FROM alpine:latest
+
+# Step 8: Install necessary dependencies (like curl, etc.) for the production environment if required
+RUN apk --no-cache add ca-certificates
+
+# Step 9: Set the working directory to /root
+WORKDIR /root/
+
+# Step 10: Copy the built Go binary from the builder stage to the production image
+COPY --from=builder /app/app .
+
+# Step 11: Expose the application port (default for HTTP in Go is 8080, but you can adjust if necessary)
+EXPOSE 8080
+
+# Step 12: Command to run the application when the container starts
+CMD ["./app"]
